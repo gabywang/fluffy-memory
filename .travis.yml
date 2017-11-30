@@ -13,8 +13,9 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 
-  # List your dependencies here to create the necessary environment
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pytest
+  # Encapsulate the environment info into its own yml file (wich carries
+  # the name `test-environment` within it)
+  - conda env create -q -f environment.yml
   - source activate test-environment
 
 script:
