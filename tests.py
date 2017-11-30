@@ -1,4 +1,5 @@
 from mymean import mean
+import numpy as np
 
 def test_mean():
     assert mean([1]) == 1
@@ -35,3 +36,9 @@ def test_complex():
     obs = mean(num_list)
     exp = NotImplemented
     assert obs == exp
+
+def test_npmean():
+    np_list = np.random.uniform(size=10_000)
+    obs = mean(np_list)
+    exp = np.mean(np_list)
+    np.testing.assert_allclose(obs, exp, rtol=1e-12)
